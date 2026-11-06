@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#2563eb">
+    <meta name="description" content="GENUSE is an interactive learning and quiz application.">
+
+    <title>GENUSE - Learn and Play</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- App Icon -->
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <main id="app"></main>
+
+    <!-- Main Application -->
+    <script type="module" src="js/app.js"></script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./service-worker.js")
+                    .then(() => {
+                        console.log("GENUSE is ready for offline use.");
+                    })
+                    .catch(error => {
+                        console.error("Service Worker registration failed:", error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
